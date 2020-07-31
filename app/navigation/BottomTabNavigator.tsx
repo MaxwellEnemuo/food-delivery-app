@@ -6,8 +6,9 @@ import * as React from 'react';
 import Colors from '../constants/Colors';
 import useColorScheme from '../hooks/useColorScheme';
 import TabOneScreen from '../screens/TabOneScreen';
+import TabOneScreen2 from '../screens/TabOneScreen2';
 import TabTwoScreen from '../screens/TabTwoScreen';
-import { BottomTabParamList, TabOneParamList, TabTwoParamList } from '../types';
+import { BottomTabParamList, TabOneParamList, TabTwoParamList } from '../../types';
 
 const BottomTab = createBottomTabNavigator<BottomTabParamList>();
 
@@ -17,19 +18,20 @@ export default function BottomTabNavigator() {
   return (
     <BottomTab.Navigator
       initialRouteName="TabOne"
-      tabBarOptions={{ activeTintColor: Colors[colorScheme].tint }}>
+      tabBarOptions={{ activeTintColor: Colors[colorScheme].tint }}
+    >
       <BottomTab.Screen
         name="TabOne"
         component={TabOneNavigator}
         options={{
-          tabBarIcon: ({ color }) => <TabBarIcon name="ios-code" color={color} />,
+          tabBarIcon: ({ color }) => <TabBarIcon name="ios-home" color={color} />,
         }}
       />
       <BottomTab.Screen
         name="TabTwo"
         component={TabTwoNavigator}
         options={{
-          tabBarIcon: ({ color }) => <TabBarIcon name="ios-code" color={color} />,
+          tabBarIcon: ({ color }) => <TabBarIcon name="ios-flower" color={color} />,
         }}
       />
     </BottomTab.Navigator>
@@ -48,11 +50,24 @@ const TabOneStack = createStackNavigator<TabOneParamList>();
 
 function TabOneNavigator() {
   return (
-    <TabOneStack.Navigator>
+    <TabOneStack.Navigator
+      initialRouteName="TabOneScreen2"
+      screenOptions={{
+        headerTitle: "Tab One Title",
+        headerStyle: { backgroundColor: "dodgerblue" },
+        headerTintColor: "white",
+      }}
+      mode='modal'
+    >
       <TabOneStack.Screen
         name="TabOneScreen"
         component={TabOneScreen}
-        options={{ headerTitle: 'Tab One Title' }}
+        options={{ headerTitle: "Tab One Title" }}
+      />
+      <TabOneStack.Screen
+        name="TabOneScreen2"
+        component={TabOneScreen2}
+        options={{ headerTitle: "Tab One 2 Title" }}
       />
     </TabOneStack.Navigator>
   );

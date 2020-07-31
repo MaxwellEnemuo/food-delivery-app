@@ -1,13 +1,18 @@
 import * as React from 'react';
 import { StyleSheet } from 'react-native';
+import { RouteProp } from '@react-navigation/native';
 
 import EditScreenInfo from '../components/EditScreenInfo';
 import { Text, View } from '../components/Themed';
+import { useRoute } from '@react-navigation/native';
+import { RootStackParamList } from '../../types';
 
 export default function TabOneScreen() {
+  const route = useRoute<RouteProp<RootStackParamList, 'Root'>>();
+
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Tab One</Text>
+      <Text style={styles.title}>Tab One {route.params.name}</Text>
       <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
       <EditScreenInfo path="/screens/TabOneScreen.tsx" />
     </View>
