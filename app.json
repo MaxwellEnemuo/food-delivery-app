@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "react-navigation",
-    "slug": "react-navigation",
+    "name": "food-delivery",
+    "slug": "food-delivery",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./app/assets/images/icon.png",
